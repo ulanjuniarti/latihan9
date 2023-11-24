@@ -29,7 +29,7 @@ class DashboardPage extends StatelessWidget {
                   Expanded(
                     child: CardColumn(
                       imageAsset: 'assets/kalung1.jpg',
-                      productName: 'Aksesoris 1',
+                      productName: 'Kalung',
                       price: 'Rp 100.000',
                     ),
                   ),
@@ -37,7 +37,7 @@ class DashboardPage extends StatelessWidget {
                   Expanded(
                     child: CardColumn(
                       imageAsset: 'assets/cincin1.jpg',
-                      productName: 'Aksesoris 2',
+                      productName: 'Cincin',
                       price: 'Rp 150.000',
                     ),
                   ),
@@ -49,7 +49,7 @@ class DashboardPage extends StatelessWidget {
                   Expanded(
                     child: CardColumn(
                       imageAsset: 'assets/gelang1.jpg',
-                      productName: 'Aksesoris 3',
+                      productName: 'Gelang',
                       price: 'Rp 120.000',
                     ),
                   ),
@@ -57,7 +57,7 @@ class DashboardPage extends StatelessWidget {
                   Expanded(
                     child: CardColumn(
                       imageAsset: 'assets/anting1.jpg',
-                      productName: 'Aksesoris 4',
+                      productName: 'Anting',
                       price: 'Rp 200.000',
                     ),
                   ),
@@ -69,7 +69,7 @@ class DashboardPage extends StatelessWidget {
                   Expanded(
                     child: CardColumn(
                       imageAsset: 'assets/jepit2.jpg',
-                      productName: 'Aksesoris 5',
+                      productName: 'Jepit',
                       price: 'Rp 80.000',
                     ),
                   ),
@@ -77,7 +77,7 @@ class DashboardPage extends StatelessWidget {
                   Expanded(
                     child: CardColumn(
                       imageAsset: 'assets/scrunchy1.jpg',
-                      productName: 'Aksesoris 6',
+                      productName: 'Scrunchy',
                       price: 'Rp 180.000',
                     ),
                   ),
