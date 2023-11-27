@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'login_page.dart';
+import 'home.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -17,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
         FocusScope.of(context).unfocus(); // Menutup keyboard sebelum navigasi
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => LoginPage()),
+          MaterialPageRoute(builder: (context) => HomePage()),
         );
       },
     );

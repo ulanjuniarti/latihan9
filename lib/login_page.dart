@@ -15,10 +15,9 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text('Lunar'),
-      //   centerTitle: true,
-      // ),
+      appBar: AppBar(
+        backgroundColor: Color(0xFFE2E2E2),
+      ),
       body: Container(
         color: Color(0xFFE2E2E2), // Warna latar belakang
         padding: const EdgeInsets.all(16.0),
