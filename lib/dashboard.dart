@@ -11,80 +11,79 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class DashboardPage extends StatelessWidget {
+class DashboardPage extends StatefulWidget {
+  @override
+  _DashboardPageState createState() => _DashboardPageState();
+}
+
+class _DashboardPageState extends State<DashboardPage> {
+  List<String> items = [
+    'Anti Gagal, Tips Mudah Membuat Nail Art Sendiri di Rumah',
+    'Tips Menjaga Makeup Tahan Lama Seharian',
+    'Tips dan Cara Mewarnai Rambut Sendiri di Rumah',
+    'Cara Membuat Masker Wajah dari Beras',
+  ];
+
+  List<String> filteredItems = [];
+
+  @override
+  void initState() {
+    super.initState();
+    filteredItems = items;
+  }
+
+  void filterSearchResults(String query) {
+    List<String> searchResults = [];
+    searchResults.addAll(items);
+
+    if (query.isNotEmpty) {
+      searchResults = searchResults
+          .where((item) => item.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    }
+
+    setState(() {
+      filteredItems = searchResults;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Lunar Accessories'),
+        title: Text('Lunar'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(), // Tambahkan physics di sini
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: CardColumn(
-                      imageAsset: 'assets/kalung1.jpg',
-                      productName: 'Kalung',
-                      price: 'Rp 100.000',
-                    ),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                onChanged: (value) {
+                  filterSearchResults(value);
+                },
+                decoration: InputDecoration(
+                  labelText: 'Cari',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
                   ),
-                  SizedBox(width: 16.0),
-                  Expanded(
-                    child: CardColumn(
-                      imageAsset: 'assets/cincin1.jpg',
-                      productName: 'Cincin',
-                      price: 'Rp 150.000',
-                    ),
-                  ),
-                ],
+                ),
               ),
-              SizedBox(height: 16.0),
-              Row(
-                children: [
-                  Expanded(
-                    child: CardColumn(
-                      imageAsset: 'assets/gelang1.jpg',
-                      productName: 'Gelang',
-                      price: 'Rp 120.000',
-                    ),
-                  ),
-                  SizedBox(width: 16.0),
-                  Expanded(
-                    child: CardColumn(
-                      imageAsset: 'assets/anting1.jpg',
-                      productName: 'Anting',
-                      price: 'Rp 200.000',
-                    ),
-                  ),
-                ],
+            ),
+            Expanded(
+              child: ListView(
+                physics: BouncingScrollPhysics(),
+                children: filteredItems
+                    .map((description) => CardColumn(
+                  imageUrl:
+                  'https://i.pinimg.com/564x/01/19/23/011923be40611f4ff282f5abfc88114c.jpg',
+                  description: description,
+                ))
+                    .toList(),
               ),
-              SizedBox(height: 16.0),
-              Row(
-                children: [
-                  Expanded(
-                    child: CardColumn(
-                      imageAsset: 'assets/jepit2.jpg',
-                      productName: 'Jepit',
-                      price: 'Rp 80.000',
-                    ),
-                  ),
-                  SizedBox(width: 16.0),
-                  Expanded(
-                    child: CardColumn(
-                      imageAsset: 'assets/scrunchy1.jpg',
-                      productName: 'Scrunchy',
-                      price: 'Rp 180.000',
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -92,14 +91,12 @@ class DashboardPage extends StatelessWidget {
 }
 
 class CardColumn extends StatelessWidget {
-  final String imageAsset;
-  final String productName;
-  final String price;
+  final String imageUrl;
+  final String description;
 
   CardColumn({
-    required this.imageAsset,
-    required this.productName,
-    required this.price,
+    required this.imageUrl,
+    required this.description,
   });
 
   @override
@@ -111,21 +108,19 @@ class CardColumn extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(
-              imageAsset,
-              height: 150.0,
-              width: 150.0,
+            Image.network(
+              imageUrl,
+              height: 200.0,
+              width: 350.0,
               fit: BoxFit.cover,
             ),
             SizedBox(height: 16.0),
             Text(
-              productName,
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 8.0),
-            Text(
-              price,
-              style: TextStyle(fontSize: 14.0, color: Colors.grey),
+              description,
+              style: TextStyle(
+                fontSize: 16.0,
+              ),
+              textAlign: TextAlign.center,
             ),
           ],
         ),
